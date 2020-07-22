@@ -6,14 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://chaserlast.github.io">
-  <title>Archives: 2020 | Hexo</title>
+  <title>我的第一篇博客文章--hexo-github搭建博客 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="https://chaserlast.github.io/archives/2020/index.html">
+  <meta name="description" content="第一步  准备1 github账户（已经安装git和配置过SSH）2 下载安装node.js稳定版">
+<meta property="og:type" content="article">
+<meta property="og:title" content="我的第一篇博客文章--hexo-github搭建博客">
+<meta property="og:url" content="https://chaserlast.github.io/2020/07/22/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0-hexo-github%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="第一步  准备1 github账户（已经安装git和配置过SSH）2 下载安装node.js稳定版">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-07-22T03:29:12.000Z">
+<meta property="article:modified_time" content="2020-07-22T03:31:03.202Z">
 <meta property="article:author" content="chaserlast">
+<meta property="article:tag" content="hexo">
+<meta property="article:tag" content="github">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -150,36 +156,60 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-我的第一篇博客文章-hexo-github搭建博客" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/22/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0-hexo-github%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" class="archive-article-date">
-  	<time datetime="2020-07-22T03:29:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-22</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/22/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0-hexo-github%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/">我的第一篇博客文章--hexo-github搭建博客</a>
+    <h1 class="article-title" itemprop="name">
+      我的第一篇博客文章--hexo-github搭建博客
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2020/07/22/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0-hexo-github%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" class="archive-article-date">
+  	<time datetime="2020-07-22T03:29:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="第一步-准备"><a href="#第一步-准备" class="headerlink" title="第一步  准备"></a>第一步  准备</h2><p>1 github账户（已经安装git和配置过SSH）<br>2 下载安装node.js稳定版<br>    <a id="more"></a></p>
+<h2 id="第二步-hexo本地部署"><a href="#第二步-hexo本地部署" class="headerlink" title="第二步 hexo本地部署"></a>第二步 hexo本地部署</h2><p>1 建立一个空文件夹，任意盘都行，文件夹名尽量不要有中文，本文用blog代替本文件夹名，搭载在E盘，其他盘类似。（下面的操作都在本文件夹中操作，遇到问题解决不了可以直接删掉本文件夹重来，不用害怕犯错。）<br>2 安装hexo  打开命令行工具，进入E盘 E:,进入该文件夹 cd blog ，运行 npm install hexo-cli -g，安装hexo。<br>3 运行 hexo init myblog ，初始化博客。（myblog为博客文件）<br>4 进入初始化目录 cd myblog ，安装依赖 npm install 。<br>5 开启hexo服务 hexo s  ，然后在浏览器地址栏输入 localhost:4000 ，存在就说明hexo本地博客已经搭建成功。</p>
+<h2 id="第三步-把hexo部署到github上"><a href="#第三步-把hexo部署到github上" class="headerlink" title="第三步 把hexo部署到github上"></a>第三步 把hexo部署到github上</h2><p>1 在github上新建一个repository，名称为 github用户名.github.io(注意符号），不选readme初始化。<br>2 用文本编辑器打开myblog文件夹中的_config.yml（配置文件）,找到# Deployment,更改它的配置，type：git，repo：复制你的仓库地址, branch：master（原来没有加入的）；找到# URL，更改它的配置，url：https：//用户名.github.io<br>3 安装插件 npm install hexo-deployer-git –save<br>4 生成静态文件 hexo g ，部署到网站hexo d。首次部署到网站可能需要配置github账户，按照命令提示配置就好。<br>5 部署成功，在地址栏输入之前填写的URL就能访问了。 </p>
+<h2 id="搭建过程中遇到的问题"><a href="#搭建过程中遇到的问题" class="headerlink" title="搭建过程中遇到的问题"></a>搭建过程中遇到的问题</h2><p>警告问题不用理会，不是error就行<br>1 npm WARN optional SKIPPING OPTIONAL DEPENDENCY:<br>npm WARN notsup SKIPPING OPTIONAL DEPENDENCY:<br>解决：fsevent是MAC需要的环境，不用理会，可以删除。<br>2 ‘git’不是内部或外部命令，也不是可运行的程序<br>解决：找到git的bin路径，加入到系统变量的PATH中<br>3 ERROR Deployer not found: git<br>解决：下载一个插件 npm install –save hexo-deployer-git </p>
+<h2 id="参考网站："><a href="#参考网站：" class="headerlink" title="参考网站："></a>参考网站：</h2><p><a href="https://hexo.io/zh-cn/" target="_blank" rel="noopener">hexo官网</a></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -195,73 +225,106 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://chaserlast.github.io/2020/07/22/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0-hexo-github%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/22/%E5%8D%9A%E5%AE%A2%E8%A7%A3%E6%9E%90/" class="archive-article-date">
-  	<time datetime="2020-07-22T03:10:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-22</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/07/22/%E5%8D%9A%E5%AE%A2%E8%A7%A3%E6%9E%90/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">博客解析</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/22/%E5%8D%9A%E5%AE%A2%E8%A7%A3%E6%9E%90/">博客解析</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/22/hello-world/" class="archive-article-date">
-  	<time datetime="2020-07-21T17:03:25.025Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/22/hello-world/">Hello World</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
 
 
           </div>
@@ -284,8 +347,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
