@@ -152,6 +152,98 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-urllib库的简单学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/25/urllib%E5%BA%93%E7%9A%84%E7%AE%80%E5%8D%95%E5%AD%A6%E4%B9%A0/">urllib库的简单学习</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/25/urllib%E5%BA%93%E7%9A%84%E7%AE%80%E5%8D%95%E5%AD%A6%E4%B9%A0/" class="archive-article-date">
+  	<time datetime="2020-07-25T11:37:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一-urllib库介绍"><a href="#一-urllib库介绍" class="headerlink" title="一 urllib库介绍"></a>一 urllib库介绍</h2><p>urllib库时python内置的HTTP请求库。包括四个模块：<br>1 request模块：是最基本的HTTP请求模块，可以用来模拟发送请求。<br>2 error模块：异常处理模块。<br>3 parse模块：一个工具模块，提供了很多URL处理方法，比如拆分，解析，合并等。<br>4 robotparser模块：主要用来识别网站的robots.txt文件，判断哪些网站可以爬。</p>
+<h2 id="二-request模块"><a href="#二-request模块" class="headerlink" title="二 request模块"></a>二 request模块</h2><p>1, urlopen（）<br>urlopen（）函数的API:<br><code>urllib.request.urlopen(url.data = None,[timeout,]*,cafile = None,capath = None,cadefault = False,context = None)</code> (反引号<code>是为了不让[]被识别为链接）
+url：传入的发送请求的URL
+data：传入的话请求方式会变为POST，传入时需要转码成bytes（字节流）类型。
+timeout：设置超时时间，单位为秒
+cafile：CA证书
+capath: CA证书的路径
+cadefault：已经被弃用了
+context：指定SSL设置，必须是ssl.SSLContext类型
+urlopen（）主要包含read（）,readinto（）,getheader(name),getheaders(),fileno()等方法，以及msg,version,status,reason,debuglevel,closed等属性
+常用用法：</code>response = urllib.request.urlopen(‘url’)`</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">爬虫</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">读书笔记</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/25/urllib%E5%BA%93%E7%9A%84%E7%AE%80%E5%8D%95%E5%AD%A6%E4%B9%A0/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-爬虫基础知识" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -644,10 +736,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
@@ -657,6 +745,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">读书笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
               </li>
              
               <li class="article-tag-list-item">
