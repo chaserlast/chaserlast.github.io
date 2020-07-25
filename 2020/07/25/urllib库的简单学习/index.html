@@ -16,7 +16,7 @@
 <meta property="og:description" content="一 urllib库介绍urllib库时python内置的HTTP请求库。包括四个模块：1 request模块：是最基本的HTTP请求模块，可以用来模拟发送请求。2 error模块：异常处理模块。3 parse模块：一个工具模块，提供了很多URL处理方法，比如拆分，解析，合并等。4 robotparser模块：主要用来识别网站的robots.txt文件，判断哪些网站可以爬。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-07-25T11:37:28.000Z">
-<meta property="article:modified_time" content="2020-07-25T15:59:02.081Z">
+<meta property="article:modified_time" content="2020-07-25T16:04:57.640Z">
 <meta property="article:author" content="chaserlast">
 <meta property="article:tag" content="python">
 <meta property="article:tag" content="爬虫">
@@ -182,44 +182,78 @@
 <h2 id="二-request模块"><a href="#二-request模块" class="headerlink" title="二 request模块"></a>二 request模块</h2><p>1, urlopen（）<br>urlopen（）函数的API:<br><code>urllib.request.urlopen(url.data = None,[timeout,]*,cafile = None,capath = None,cadefault = False,context = None)</code> </p>
 <p>url：传入的发送请求的URL<br>data：传入的话请求方式会变为POST，传入时需要转码成bytes（字节流）类型。<br>timeout：设置超时时间，单位为秒<br>cafile：CA证书<br>capath: CA证书的路径<br>cadefault：已经被弃用了<br>context：指定SSL设置，必须是ssl.SSLContext类型<br>urlopen（）主要包含read（）,readinto（）,getheader(name),getheaders(),fileno()等方法，以及msg,version,status,reason,debuglevel,closed等属性<br>常用用法：<br>    <code>response = urllib.request.urlopen(&#39;url&#39;)</code></p>
 <p>2, Request类</p>
-<p>构造方法：<br>·class urllib.request.Request(url,data = None,headers = {},origin_req_host = None,unverifiable = False,method = None)`</p>
-<p>url:指定URL<br>data：必须是bytes（字节流）<br>headers: 请求头，是一个字典，我们可以在构造请求时通过headers参数直接构造，也可以通过请求示例的add_header()方法添加。<br>通常用于修改User-Agent来伪装浏览器。<br>origin_req_host:指的是请求方的host名称或者IP地址。<br>unverifiable :标识这个请求是否是无法验证的，默认False。<br>method：只是请求使用的方法，字符串。<br>常用方法：<br>‘’’<br>from urllib import request,parse<br>url = ‘<a href="http://httpbin.org/post&#39;" target="_blank" rel="noopener">http://httpbin.org/post&#39;</a><br>headers = {<br>    ‘User-Agent’:’Mozilla/5.0 (X11; U; Linux i686) Gecko/20071127 Firefox/2.0.0.11’ #指定伪装的浏览器</p>
-<p>}</p>
-<p>dict = {<br>    ‘name’:’Germey’<br>}<br>data = bytes(parse.urlencode(dict),encoding = ‘utf-8’)<br>req = request.Request(url = url,data = data,headers = headers,method = ‘post’)<br>response = request.urlopen(req)<br>print(response.read().decode(‘utf-8’))<br>‘’’<br>3 BaseHandler类<br>是其他Handler的父类，他提供了最基本的方法，例如default_open(),protoclo_request()等。<br>HTTPDefaultErrorHandler:用于处理HTTP响应错误。<br>HTTPRedirectHandler；用于处理重定向。<br>HTTPCookieProcessor；用于处理Cookies。<br>ProxyHandler:用于设置代理，默认代理为空。<br>HTTPPasswordMgr； 用于管理代码，他维护了用户名和密码。<br>HTTPBasicAuthHandler；用于管理认证。</p>
-<p>4 OpenerDirector类<br>称为Opener，urlopen()就是urllib为我们提供的一个Opener。<br>它和Handler的管事就是利用Handler来构建Opener。<br>（1）验证<br>‘’’<br>from urllib.request import HTTPPasswordMgrWithDefaultRealm,HTTPBasicAuthHandler,build_opener<br>from urllib.error import URLError</p>
-<p>username = ‘username’                                     #需要认证的用户名<br>password = ‘password’                                     #需要认证的密码<br>url = ‘<a href="http://localhost:5000&#39;">http://localhost:5000&#39;</a>                              #需要认证的url</p>
-<p>p = HTTPPasswordMgrWithDefaultRealm()<br>P.add_password(None,url,username,password)                 #添加用户名和密码<br>auth_handler = HTTPBasicAuthHandler(p)                    #实例化一个HTTPBasicAuthHandler对象<br>opener = build_opener(auth_handler)                          #构建一个opener</p>
-<p>try:<br>    result = opener.open(url)<br>    html = result.read().decode(‘utf-8’)<br>    print(html)<br>except URLError as e:<br>    print(e.reason)<br>‘’’</p>
-<p>（2）代理</p>
-<p>‘’’<br>from urllib.error import URLError<br>from url.request import ProxyHandler,build_opener</p>
-<p>proxy_handler = ProxyHandler({<br>    ‘http’: ‘<a href="http://127.0.0.1:9473&#39;">http://127.0.0.1:9473&#39;</a>,                    #http代理，这是本地端口，实际上应该用代理服务器<br>    ‘https’: ‘<a href="https://127.0.0.1:9473&#39;">https://127.0.0.1:9473&#39;</a>                   #https代理<br>})</p>
-<p>opener = build_opener(proxy_handler)                     #构建一个代理的opener<br>try:<br>    response = opener.open(‘<a href="https://www.baidu.com&#39;" target="_blank" rel="noopener">https://www.baidu.com&#39;</a>)<br>    print(response.read().decode(‘utf-8’))<br>except URLError as e:<br>    print(e.reason)<br>‘’’   </p>
-<p>（3）Cookies</p>
-<p>‘’’<br>from http.cookiejar,urllib.request</p>
-<p>cookie = http.cookiejar.CookieJar()<br>handler = urllib.request.HTTPCookieProcessor(cookie)<br>opener = urllib.request.build_opener(handler)<br>response = opener.open(‘<a href="http://www.baidu.com&#39;" target="_blank" rel="noopener">http://www.baidu.com&#39;</a>)<br>for item in cookie:<br>    print(item.name+”=”+item.value<br>‘’’<br>Cookies输出成文件格式：<br>‘’’<br>from http.cookiejar,urllib.request</p>
-<p>filename = ‘cookies.txt’<br>cookie = http.cookiejar.MozillaCookieJar(filename)              #和上面不同的是，MozillaCookieJar是CookieJar的子类，用来处理Cookies和文件相关的事件<br>handler = urllib.request.HTTPCookieProcessor(cookie)             保存成Mozilla浏览器相对应的文件，LWPCookieJar同理。<br>opener = urllib.request.build_opener(handler)<br>response = opener.open(‘<a href="http://www.baidu.com&#39;" target="_blank" rel="noopener">http://www.baidu.com&#39;</a>)<br>cookie.save(ignore_discard = True,ignore_expires = True)           #cookies以文件形式保存</p>
-<p>‘’’<br>从文件中读取并利用，以LWPCookieJar格式为例：<br>‘’’<br>cookie = http.cookiejar.LWPCookieJar()<br>cookie.load(‘cookies.txt’,ignore_discard = True,ignore_expires = True)<br>handler = urllib.request.HTTPCookieProcessor(cookie)<br>opener = urllib.request.build_opener(handler)<br>response = opener.open(‘<a href="http://www.baidu.com&#39;" target="_blank" rel="noopener">http://www.baidu.com&#39;</a>)<br>print(response.read().decode(‘utf-8’))<br>‘’’</p>
-<h2 id="三-error模块"><a href="#三-error模块" class="headerlink" title="三 error模块"></a>三 error模块</h2><p>1，URLError</p>
-<p>URLError类来自error模块，继承自OSError类，是error异常模块的基类，有request模块生的异常都可以通过捕获这个类来处理。<br>它的属性reason，返回错误的原因。<br>实例：<br>‘’’<br>from urllib import request,error<br>try:<br>    response = request.urlopen(‘url’)<br>except error.URLError as e:<br>    print(e,reason)<br>‘’’</p>
-<p>2，HTTPError<br>URLError的子类，专门用来处理HTTP请求错误<br>它有三个属性：<br>（1）code：返回HTTP状态码<br>（2）reason：返回错误的原因。<br>（3）headers：返回请求头。</p>
-<h2 id="四-parse模块"><a href="#四-parse模块" class="headerlink" title="四 parse模块"></a>四 parse模块</h2><p>它定义了处理URL的标准接口<br>1 urlparse():实现URL的识别和分段<br>‘’’<br>from urllib.parse import urlparse<br>result = urlparse(‘<a href="http://www.baidu.com/index.html;user?id=5#comment&#39;" target="_blank" rel="noopener">http://www.baidu.com/index.html;user?id=5#comment&#39;</a>)<br>print(type(result),result)<br>‘’’</p>
-<p>返回URL的6部分：<br>`scheme=’http’ netloc=’<a href="http://www.baidu.com&#39;，path=&#39;index.html" target="_blank" rel="noopener">www.baidu.com&#39;，path=&#39;index.html</a> params= user query=’id=5’,fragment=’comment’)<br>分别是协议，域名，访问路径，参数，查询条件，锚点</p>
-<p><code>API: urllib.parse.urlparse(urlstring,scheme=&#39;&#39;,allow fragments = True)</code><br>urlstring:待解析的URL<br>scheme:默认的协议<br>allow fragments：是否忽略fragment</p>
-<p>2 urlunparse()<br>与urlparse()对立，接受的参数是一个可迭代对象。</p>
-<p>3 urlsplit()<br>与urlparse()相似，只不过不在单独解析params,只返回5个结果。</p>
-<p>4 urlunsplit()</p>
-<p>5 urljoin()<br>可以将残缺的url拼接起来，以第二个参数为准。</p>
-<p>6 urlencode()</p>
-<p><code>url = base_url + urlencode(params)</code>       #params是一个字典，然后将params加进原有URL</p>
-<p>7 parse_qs()<br>与urlencode()相反，返回一个字典</p>
-<p>8 parse_qsl()<br>和parse_qs()相似，只是返回的是一个元组。</p>
-<p>9 quote()<br>将内容转化为URL编码的格式</p>
-<p>10 unquote()<br>与quote()相反</p>
-<h2 id="五-robotparser模块"><a href="#五-robotparser模块" class="headerlink" title="五 robotparser模块"></a>五 robotparser模块</h2><p>1 Robots协议<br>又称爬虫协议，告诉爬虫和搜索引擎哪些页面可以抓取，哪些不可以抓取。<br>只允许爬取public目录：</p>
-<p>‘’’<br>User-Agent: *<br>Disallow: /<br>Allow: /public/<br>‘’’<br>禁止所有爬虫访问人和目录：<br>‘’’<br>User-Agent: *<br>Disallow: /<br>‘’’<br>允许所有爬虫访问任何目录：<br>‘’’<br>User-Agent: *<br>Disallow:<br>‘’’<br>禁止所有爬虫访问网站某些目录：<br>‘’’<br>User-Agent: *<br>Disallow: /private/<br>Disallow: /tmp/<br>‘’’<br>只允许某一个爬虫访问：<br>‘’’<br>User-Agent: WebCrawler<br>Disallow:<br>User-Agent: *<br>Disallow: /<br>‘’’</p>
-<p>2 爬虫名称<br>很多大公司的爬虫都是有固定的名字的</p>
-<p>3 robotparser<br>它提供了一个类RobotFileParer,可以根据网站的robots.txt文件来判断一个爬取爬虫是否有权限来爬取这个网页。<br><code>urllib.robotparser.RobotFileParser(url = &#39;&#39;)</code><br>常用方法：<br>set_url():设置robots.txt文件的链接。<br>read():读取robots.txt文件并进行分析。<br>parse():解析robots.txt文件。<br>can_fetch():传入User-Agent和URL，返回是否可以抓取，True或者False<br>mtime():返回上次抓取和分析robots.txt的时间<br>modified():将当前时间设置为上次抓取和分析robots.txt的时间.</p>
+<p>构造方法：<br><code>class urllib.request.Request(url,data = None,headers = {},origin_req_host = None,unverifiable = False,method = None)</code></p>
+<p>url:指定URL<br>data：必须是bytes（字节流）<br>headers: 请求头，是一个字典，我们可以在构造请求时通过headers参数直接构造，也可以通过请求示例的add_header()方法添加。<br>通常用于修改User-Agent来伪装浏览器。<br>origin_req_host:指的是请求方的host名称或者IP地址。<br>unverifiable :标识这个请求是否是无法验证的，默认False。<br>method：只是请求使用的方法，字符串。<br>常用方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">from urllib import request,parse</span><br><span class="line">url &#x3D; &#39;http:&#x2F;&#x2F;httpbin.org&#x2F;post&#39;</span><br><span class="line">headers &#x3D; &#123;</span><br><span class="line">    &#39;User-Agent&#39;:&#39;Mozilla&#x2F;5.0 (X11; U; Linux i686) Gecko&#x2F;20071127 Firefox&#x2F;2.0.0.11&#39; #指定伪装的浏览器</span><br><span class="line">                                     </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">dict &#x3D; &#123;</span><br><span class="line">    &#39;name&#39;:&#39;Germey&#39;</span><br><span class="line">&#125;</span><br><span class="line">data &#x3D; bytes(parse.urlencode(dict),encoding &#x3D; &#39;utf-8&#39;)</span><br><span class="line">req &#x3D; request.Request(url &#x3D; url,data &#x3D; data,headers &#x3D; headers,method &#x3D; &#39;post&#39;)</span><br><span class="line">response &#x3D; request.urlopen(req)</span><br><span class="line">print(response.read().decode(&#39;utf-8&#39;))</span><br></pre></td></tr></table></figure>
+<p>3 BaseHandler类<br>是其他Handler的父类，他提供了最基本的方法，例如default_open(),protoclo_request()等。<br>HTTPDefaultErrorHandler:用于处理HTTP响应错误。<br>HTTPRedirectHandler；用于处理重定向。<br>HTTPCookieProcessor；用于处理Cookies。<br>ProxyHandler:用于设置代理，默认代理为空。<br>HTTPPasswordMgr； 用于管理代码，他维护了用户名和密码。<br>HTTPBasicAuthHandler；用于管理认证。</p>
+<p>4 OpenerDirector类<br>称为Opener，urlopen()就是urllib为我们提供的一个Opener。<br>它和Handler的管事就是利用Handler来构建Opener。<br>（1）验证</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">from urllib.request import HTTPPasswordMgrWithDefaultRealm,HTTPBasicAuthHandler,build_opener</span><br><span class="line">from urllib.error import URLError</span><br><span class="line"></span><br><span class="line">username &#x3D; &#39;username&#39;                                     #需要认证的用户名</span><br><span class="line">password &#x3D; &#39;password&#39;                                     #需要认证的密码</span><br><span class="line">url &#x3D; &#39;http:&#x2F;&#x2F;localhost:5000&#39;                              #需要认证的url</span><br><span class="line"></span><br><span class="line">p &#x3D; HTTPPasswordMgrWithDefaultRealm()</span><br><span class="line">P.add_password(None,url,username,password)                 #添加用户名和密码</span><br><span class="line">auth_handler &#x3D; HTTPBasicAuthHandler(p)                    #实例化一个HTTPBasicAuthHandler对象</span><br><span class="line">opener &#x3D; build_opener(auth_handler)                          #构建一个opener</span><br><span class="line"></span><br><span class="line">try:</span><br><span class="line">    result &#x3D; opener.open(url)</span><br><span class="line">    html &#x3D; result.read().decode(&#39;utf-8&#39;)</span><br><span class="line">    print(html)</span><br><span class="line">except URLError as e:</span><br><span class="line">    print(e.reason)</span><br></pre></td></tr></table></figure>
 
+<p>（2）代理</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">from urllib.error import URLError</span><br><span class="line">from url.request import ProxyHandler,build_opener</span><br><span class="line"></span><br><span class="line">proxy_handler &#x3D; ProxyHandler(&#123;</span><br><span class="line">    &#39;http&#39;: &#39;http:&#x2F;&#x2F;127.0.0.1:9473&#39;,                    #http代理，这是本地端口，实际上应该用代理服务器</span><br><span class="line">    &#39;https&#39;: &#39;https:&#x2F;&#x2F;127.0.0.1:9473&#39;                   #https代理</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">opener &#x3D; build_opener(proxy_handler)                     #构建一个代理的opener</span><br><span class="line">try:</span><br><span class="line">    response &#x3D; opener.open(&#39;https:&#x2F;&#x2F;www.baidu.com&#39;)</span><br><span class="line">    print(response.read().decode(&#39;utf-8&#39;))</span><br><span class="line">except URLError as e:</span><br><span class="line">    print(e.reason)</span><br><span class="line">&#96;&#96;&#96;  </span><br><span class="line"></span><br><span class="line">（3）Cookies</span><br></pre></td></tr></table></figure>
+<p>from http.cookiejar,urllib.request</p>
+<p>cookie = http.cookiejar.CookieJar()<br>handler = urllib.request.HTTPCookieProcessor(cookie)<br>opener = urllib.request.build_opener(handler)<br>response = opener.open(‘<a href="http://www.baidu.com&#39;" target="_blank" rel="noopener">http://www.baidu.com&#39;</a>)<br>for item in cookie:<br>    print(item.name+”=”+item.value</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Cookies输出成文件格式：</span><br></pre></td></tr></table></figure>
+<p>from http.cookiejar,urllib.request</p>
+<p>filename = ‘cookies.txt’<br>cookie = http.cookiejar.MozillaCookieJar(filename)              #和上面不同的是，MozillaCookieJar是CookieJar的子类，用来处理Cookies和文件相关的事件<br>handler = urllib.request.HTTPCookieProcessor(cookie)             保存成Mozilla浏览器相对应的文件，LWPCookieJar同理。<br>opener = urllib.request.build_opener(handler)<br>response = opener.open(‘<a href="http://www.baidu.com&#39;" target="_blank" rel="noopener">http://www.baidu.com&#39;</a>)<br>cookie.save(ignore_discard = True,ignore_expires = True)           #cookies以文件形式保存</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">从文件中读取并利用，以LWPCookieJar格式为例：</span><br></pre></td></tr></table></figure>
+<p>cookie = http.cookiejar.LWPCookieJar()<br>cookie.load(‘cookies.txt’,ignore_discard = True,ignore_expires = True)<br>handler = urllib.request.HTTPCookieProcessor(cookie)<br>opener = urllib.request.build_opener(handler)<br>response = opener.open(‘<a href="http://www.baidu.com&#39;" target="_blank" rel="noopener">http://www.baidu.com&#39;</a>)<br>print(response.read().decode(‘utf-8’))</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## 三 error模块</span><br><span class="line"></span><br><span class="line">1，URLError</span><br><span class="line"></span><br><span class="line">URLError类来自error模块，继承自OSError类，是error异常模块的基类，有request模块生的异常都可以通过捕获这个类来处理。  </span><br><span class="line">它的属性reason，返回错误的原因。</span><br><span class="line">实例：</span><br></pre></td></tr></table></figure>
+<p>from urllib import request,error<br>try:<br>    response = request.urlopen(‘url’)<br>except error.URLError as e:<br>    print(e,reason)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">2，HTTPError</span><br><span class="line">URLError的子类，专门用来处理HTTP请求错误</span><br><span class="line">它有三个属性：   </span><br><span class="line">（1）code：返回HTTP状态码</span><br><span class="line">（2）reason：返回错误的原因。</span><br><span class="line">（3）headers：返回请求头。</span><br><span class="line"></span><br><span class="line">## 四 parse模块</span><br><span class="line">它定义了处理URL的标准接口</span><br><span class="line">1 urlparse():实现URL的识别和分段</span><br></pre></td></tr></table></figure>
+<p>from urllib.parse import urlparse<br>result = urlparse(‘<a href="http://www.baidu.com/index.html;user?id=5#comment&#39;" target="_blank" rel="noopener">http://www.baidu.com/index.html;user?id=5#comment&#39;</a>)<br>print(type(result),result)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">返回URL的6部分： </span><br><span class="line">&#96;scheme&#x3D;’http&#39; netloc&#x3D;&#39;www.baidu.com&#39;，path&#x3D;&#39;index.html params&#x3D; user query&#x3D;’id&#x3D;5&#39;,fragment&#x3D;&#39;comment&#39;)</span><br><span class="line">分别是协议，域名，访问路径，参数，查询条件，锚点</span><br><span class="line"></span><br><span class="line">API: &#96;urllib.parse.urlparse(urlstring,scheme&#x3D;&#39;&#39;,allow fragments &#x3D; True)&#96;</span><br><span class="line">urlstring:待解析的URL  </span><br><span class="line">scheme:默认的协议</span><br><span class="line">allow fragments：是否忽略fragment</span><br><span class="line"></span><br><span class="line">2 urlunparse()</span><br><span class="line">与urlparse()对立，接受的参数是一个可迭代对象。</span><br><span class="line"></span><br><span class="line">3 urlsplit()</span><br><span class="line">与urlparse()相似，只不过不在单独解析params,只返回5个结果。</span><br><span class="line"></span><br><span class="line">4 urlunsplit()</span><br><span class="line"></span><br><span class="line">5 urljoin()</span><br><span class="line">可以将残缺的url拼接起来，以第二个参数为准。</span><br><span class="line"></span><br><span class="line">6 urlencode()</span><br><span class="line"></span><br><span class="line">&#96;url &#x3D; base_url + urlencode(params)&#96;       #params是一个字典，然后将params加进原有URL</span><br><span class="line"></span><br><span class="line">7 parse_qs()</span><br><span class="line">与urlencode()相反，返回一个字典</span><br><span class="line"></span><br><span class="line">8 parse_qsl()</span><br><span class="line">和parse_qs()相似，只是返回的是一个元组。</span><br><span class="line"></span><br><span class="line">9 quote()</span><br><span class="line">将内容转化为URL编码的格式</span><br><span class="line"></span><br><span class="line">10 unquote()</span><br><span class="line">与quote()相反</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## 五 robotparser模块</span><br><span class="line"></span><br><span class="line">1 Robots协议</span><br><span class="line">又称爬虫协议，告诉爬虫和搜索引擎哪些页面可以抓取，哪些不可以抓取。</span><br><span class="line">只允许爬取public目录：</span><br></pre></td></tr></table></figure>
+<p>User-Agent: *<br>Disallow: /<br>Allow: /public/</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">禁止所有爬虫访问人和目录：</span><br></pre></td></tr></table></figure>
+<p>User-Agent: *<br>Disallow: /</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">允许所有爬虫访问任何目录：</span><br></pre></td></tr></table></figure>
+<p>User-Agent: *<br>Disallow: </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">禁止所有爬虫访问网站某些目录：</span><br></pre></td></tr></table></figure>
+<p>User-Agent: *<br>Disallow: /private/<br>Disallow: /tmp/</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">只允许某一个爬虫访问：</span><br></pre></td></tr></table></figure>
+<p>User-Agent: WebCrawler<br>Disallow:<br>User-Agent: *<br>Disallow: /</p>
+<pre><code>
+2 爬虫名称
+很多大公司的爬虫都是有固定的名字的
+
+3 robotparser
+它提供了一个类RobotFileParer,可以根据网站的robots.txt文件来判断一个爬取爬虫是否有权限来爬取这个网页。
+`urllib.robotparser.RobotFileParser(url = &apos;&apos;)`
+常用方法：
+set_url():设置robots.txt文件的链接。
+read():读取robots.txt文件并进行分析。
+parse():解析robots.txt文件。
+can_fetch():传入User-Agent和URL，返回是否可以抓取，True或者False
+mtime():返回上次抓取和分析robots.txt的时间
+modified():将当前时间设置为上次抓取和分析robots.txt的时间.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</code></pre>
       
 
       
