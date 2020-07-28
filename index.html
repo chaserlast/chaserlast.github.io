@@ -174,74 +174,9 @@
       
         <h2 id="一-基本用法"><a href="#一-基本用法" class="headerlink" title="一 基本用法"></a>一 基本用法</h2><p>1 构造请求</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">r &#x3D; requests.get(&#39;url&#39;)       # 以get方式请求网页，以下同理</span><br><span class="line">r &#x3D; requests.post(&#39;url&#39;)</span><br><span class="line">r &#x3D; requests.put(&#39;url&#39;)</span><br><span class="line">r &#x3D; requests.delete(&#39;url&#39;)</span><br><span class="line">r &#x3D; requests.head(&#39;url&#39;)</span><br><span class="line">r &#x3D; requests.options(&#39;url&#39;)</span><br></pre></td></tr></table></figure>
-
-<p>2 GET请求</p>
-<p>最简单的GET构造:<br><code>r = requests.get(&#39;url&#39;)</code>      </p>
-<p>给url传入params参数：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">data &#x3D; &#123;</span><br><span class="line">    &#39;name&#39;: &#39;germey&#39;,</span><br><span class="line">    &#39;age&#39;: 22                    </span><br><span class="line">&#125;</span><br><span class="line">r &#x3D; requests.get(&#39;url&#39;,params &#x3D; data)</span><br><span class="line">print(r.text)             #网页的返回类型是str类型，但是是JSON格式的，如果想直接解析返回结果，得到一个字典格式的，可以直接调用json()fangfa .</span><br></pre></td></tr></table></figure>
-
-<p>抓取网页，添加headers:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">import re</span><br><span class="line"></span><br><span class="line">headers &#x3D; &#123;</span><br><span class="line">    &#39;User-Agent&#39;: &#39;Mozilla&#x2F;5.o (Macintosh; Intel Mac OS k 10_11_ 4) AppleWebKit&#x2F;537.36 (KHTML, like Gecko) Chrome&#x2F;52.0.2743.116 Satari&#x2F;537.36&#39;                          #伪装浏览器</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line">r &#x3D; requests.get(&#39;https:&#x2F;&#x2F;www.zhihu.com&#x2F;explore&#39;,headers &#x3D; headers)</span><br><span class="line">pattern &#x3D; re.compile(&#39;explore-feed.*?question_link.*?&gt;(.*?)&lt;&#x2F;a&gt;&#39;,re.S)   #正则表达式</span><br><span class="line">titles &#x3D; re.findall(pattern,.text)</span><br><span class="line">print(titles)</span><br></pre></td></tr></table></figure>
-
-<p>抓取二进制数据：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line"></span><br><span class="line">r &#x3D; requests.get(&#39;https:&#x2F;&#x2F;github.com&#x2F;favicon.ico&quot;)      #抓取github网站的图标</span><br><span class="line">print(r.text)               #图标是二进制数据，直接转化为str类型，会出现乱码</span><br><span class="line">print(r.content)            #正常输出</span><br></pre></td></tr></table></figure>
-
-<p>3 POST请求</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line"></span><br><span class="line">data &#x3D; &#123;</span><br><span class="line">    &#39;name&#39;: &#39;germey&#39;,</span><br><span class="line">    &#39;age&#39; &#x3D; &#39;22&#39;</span><br><span class="line">&#125;</span><br><span class="line">r &#x3D; requests.post(&#39;&#39;http:&#x2F;&#x2F;httpbin.org&#x2F;post&quot;,data &#x3D; data)     #提交的data数据进入form部分</span><br><span class="line">print(t.text)</span><br></pre></td></tr></table></figure>
-
-<p>4 响应</p>
-<p>响应的信息可以有很多办法获得。<br>r.text: 文本内容输出<br>r.content: 二进制方式输出<br>r.status_code: 获取状态码<br>r.headers: 获取响应头<br>r.cookies: Cookies<br>r.url:<br>r.history: 请求历史</p>
-<h2 id="二-高级用法"><a href="#二-高级用法" class="headerlink" title="二 高级用法"></a>二 高级用法</h2><p>1 文本上传</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line"></span><br><span class="line">files &#x3D; &#123;</span><br><span class="line">    &#39;file&#39;: open(&#39;favicon.ico&#39;,&#39;rb&#39;)</span><br><span class="line">&#125;</span><br><span class="line">r &#x3D; requests.post(&#39;http:&#x2F;&#x2F;httpbin.ort&#x2F;post&#39;,files &#x3D; files)    #用上一节的favicon.ico来模拟上传</span><br><span class="line">print(r.text)</span><br></pre></td></tr></table></figure>
-
-<p>2 Cookies<br>获取Cookies：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line"></span><br><span class="line">r &#x3D; requests.get(&#39;https:&#x2F;&#x2F;www.baidu.com&#39;)</span><br><span class="line">print(r.cookies)</span><br><span class="line">for key,value in r.cookies.items():               #用字典的items()方法将其转化为元组组成的列表，遍历</span><br><span class="line">    print(key + &#39;&#x3D;&#39; + value)</span><br></pre></td></tr></table></figure>
-
-<p>3 会话维持</p>
-<p>先用get()实现登录，然后用get()获取信息，连续两次get()必须设置同样的cookies才能成功，太过繁琐，我们可以维持同一个会话来达到结果。<br>Session的使用：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">s &#x3D; requests.Session()                                          #和服务器申请一个会话</span><br><span class="line">s.get(&#39;http:&#x2F;&#x2F;httpbin.org&#x2F;cookies&#x2F;set&#x2F;number&#x2F;123456789&#39;)      #模拟登录</span><br><span class="line">r &#x3D; s.get(&#39;http:&#x2F;&#x2F;httpbin.org&#x2F;cookies&#39;)             #同一个会话中获取信息</span><br><span class="line">print(r.text)</span><br></pre></td></tr></table></figure>
-<p>4 SSL证书验证<br>发送HTTP请求的时候，它会检查SSL证书，我们可以用verify参数控制是否检查此证书，默认是True<br>12306的证书不被官方CA机构信任，requests请求时可以设置不验证。<br><code>response = requests.get(&#39;https://wwww.12306.cn&#39;,verify = False)</code><br>同时设置忽略警告的方式来屏蔽警告：<br><code>urllib3.disable_warnings()</code></p>
-<p>5 代理设置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">proxies &#x3D; &#123;</span><br><span class="line">    &#39;http&#39;: &#39;http:10.10.1.10:3128&#39;,           #这是本地地址，直接运行不行，只是一个说明</span><br><span class="line">    &#39;https&#39;: &#39;http:&#x2F;&#x2F;10.10.1.10:1080&#39;,</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line">requests.get(&#39;https:&#x2F;&#x2F;www.taobao.com&#39;,proxies &#x3D; proxies)</span><br></pre></td></tr></table></figure>
-<p>若代理需要使用HTTP Basic Auth，可以使用类似<code>http://user:password@host:port</code>这样的语法来设置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">proxies &#x3D; &#123;</span><br><span class="line">    &#39;http&#39;:&#39;http:&#x2F;&#x2F;user:password@host:port&#39;</span><br><span class="line">&#125;</span><br><span class="line">requests.get(&#39;https:&#x2F;&#x2F;www.taobao.com&#39;,proxies &#x3D; proxies)</span><br></pre></td></tr></table></figure>
-<p>requests还支持SOCKS协议的代理。</p>
-<p>6 超时设置</p>
-<p><code>r = requests.get(&#39;https://www.taobao.com&#39;,timeout = 1)</code>  #默认None，永久等待</p>
-<p>7 身份认证</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">from requests.auth import HTTPBasicAuth</span><br><span class="line">r &#x3D; requests.get(&#39;http:&#x2F;&#x2F;localhost:5000&#39;,auth &#x3D; HTTPBasicAuth(&#39;username&#39;,&#39;password&#39;))</span><br><span class="line">print(r.status_code)</span><br></pre></td></tr></table></figure>
-<p>也可以简化写法，直接传一个元组，他会默认使用HTTPBasicAuth这个类来认证<br><code>r = requests.get(&#39;http://localhost:5000&#39;,auth = (&#39;username&#39;,&#39;password&#39;))</code></p>
-<p>8 Prepared Request<br>requests的数据结构</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">from requests import Request,Session</span><br><span class="line"></span><br><span class="line">url &#x3D; &#39;http:&#x2F;&#x2F;httpbin.org&#x2F;post&#39;</span><br><span class="line">data &#x3D; &#123;</span><br><span class="line">    &#39;name&#39;:&#39;germey&#39;</span><br><span class="line">&#125;</span><br><span class="line">headers &#x3D; &#123;</span><br><span class="line">    &#39;User-Agent&#39;: Mozilla&#x2F;5.o (Macintosh; Intel Mac OS k 10_11_ 4) AppleWebKit&#x2F;537.36 (KHTML, like Gecko) Chrome&#x2F;52.0.2743.116 Satari&#x2F;537.36&#39;</span><br><span class="line">&#125;</span><br><span class="line">s &#x3D; Session()</span><br><span class="line">req &#x3D; Request(&#39;POST&#39;,url,data &#x3D; data,headers &#x3D; headers)         Request只够造请求不发送请求 </span><br><span class="line">prepped &#x3D; s.prepare_request(req)                                #转化为可以被requests利用的数据结构</span><br><span class="line">r &#x3D; s.send(prepped)</span><br><span class="line">print(r.text)</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        
+          <a class="article-more-a" href="/2020/07/26/requests%E5%BA%93%E7%9A%84%E7%AE%80%E5%8D%95%E5%AD%A6%E4%B9%A0/#more">more >></a>
+        
       
 
       
@@ -878,6 +813,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
@@ -887,10 +826,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">读书笔记</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
               </li>
              
               <li class="article-tag-list-item">
