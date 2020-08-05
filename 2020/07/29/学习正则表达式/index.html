@@ -16,7 +16,7 @@
 <meta property="og:description" content="一 常用的匹配规则">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-07-29T13:24:14.000Z">
-<meta property="article:modified_time" content="2020-08-05T14:22:41.599Z">
+<meta property="article:modified_time" content="2020-08-05T14:32:38.542Z">
 <meta property="article:author" content="chaserlast">
 <meta property="article:tag" content="python">
 <meta property="article:tag" content="爬虫">
@@ -181,11 +181,11 @@
 
 
 <h2 id="二-常用的匹配方法"><a href="#二-常用的匹配方法" class="headerlink" title="二 常用的匹配方法"></a>二 常用的匹配方法</h2><p>1 match()<br>从字符串的开头开始匹配的，一旦开头不匹配，那么整个匹配就失败了。<br>常用方法：match(‘正则表达式’,字符串)<br>match()有两个方法，group()和span()<br>group()方法输出匹配的内容<br>span()方法输出匹配的范围<br>如果我们想要提取一部分字符串内容，就可以把正则表达式里要提取的一部分用()括起来。</p>
-<p>***贪婪与非贪婪  </p>
+<p><strong>贪婪与非贪婪</strong>   </p>
 <p><code>.*</code>代表通用匹配，但是属于匹配尽可能多的内容，贪婪匹配</p>
 <p><code>.*?</code>代表通用匹配，但是属于匹配尽可能少的内容，属于非贪婪匹配。</p>
 <p>通常情况下我们要使用费贪婪匹配，但是匹配字符串结尾时，<code>.*?</code>可能会匹配不到内容，因为是匹配尽可能少的内容。</p>
-<p>***修饰符  </p>
+<p><strong>修饰符</strong>  </p>
 <p>使用修饰符来控制匹配模式</p>
 
 
@@ -461,10 +461,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
@@ -474,6 +470,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">读书笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
               </li>
              
               <li class="article-tag-list-item">
