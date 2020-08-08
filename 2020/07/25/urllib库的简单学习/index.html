@@ -16,7 +16,7 @@
 <meta property="og:description" content="一 urllib库介绍urllib库时python内置的HTTP请求库。包括四个模块：1 request模块：是最基本的HTTP请求模块，可以用来模拟发送请求。2 error模块：异常处理模块。3 parse模块：一个工具模块，提供了很多URL处理方法，比如拆分，解析，合并等。4 robotparser模块：主要用来识别网站的robots.txt文件，判断哪些网站可以爬。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-07-25T11:37:28.000Z">
-<meta property="article:modified_time" content="2020-07-25T16:24:29.857Z">
+<meta property="article:modified_time" content="2020-08-08T09:13:21.540Z">
 <meta property="article:author" content="chaserlast">
 <meta property="article:tag" content="python">
 <meta property="article:tag" content="爬虫">
@@ -235,6 +235,7 @@
 
 <p>2 爬虫名称<br>很多大公司的爬虫都是有固定的名字的</p>
 <p>3 robotparser<br>它提供了一个类RobotFileParer,可以根据网站的robots.txt文件来判断一个爬取爬虫是否有权限来爬取这个网页。<br><code>urllib.robotparser.RobotFileParser(url = &#39;&#39;)</code><br>常用方法：<br>set_url():设置robots.txt文件的链接。<br>read():读取robots.txt文件并进行分析。<br>parse():解析robots.txt文件。<br>can_fetch():传入User-Agent和URL，返回是否可以抓取，True或者False<br>mtime():返回上次抓取和分析robots.txt的时间<br>modified():将当前时间设置为上次抓取和分析robots.txt的时间.</p>
+<p><a href="https://docs.python.org/3/library/urllib.html" target="_blank" rel="noopener">urllib官方文档</a></p>
 
       
 
@@ -484,6 +485,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
@@ -493,10 +498,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">读书笔记</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
               </li>
              
               <li class="article-tag-list-item">

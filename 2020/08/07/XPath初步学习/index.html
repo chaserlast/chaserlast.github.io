@@ -16,8 +16,9 @@
 <meta property="og:description" content="一 XPath认识XPath,全程XML Path Language，即XML路径语言，它是一门在 XML 文档中查找信息的语言。它最初是用来搜寻 XML 文档的，但是它同样适用于 HTML 文档的搜索。XPath提供了超过100个内建函数，用于字符串、数值、时间的匹配以及节点、序列的处理等 。">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://chaserlast.github.io/2020/08/07/XPath%E5%88%9D%E6%AD%A5%E5%AD%A6%E4%B9%A0/XPath%E5%B8%B8%E7%94%A8%E8%A7%84%E5%88%99.JPG">
+<meta property="og:image" content="https://chaserlast.github.io/2020/08/07/XPath%E5%88%9D%E6%AD%A5%E5%AD%A6%E4%B9%A0/XPath%E5%B8%B8%E7%94%A8%E8%BF%90%E7%AE%97%E7%AC%A6.jpg">
 <meta property="article:published_time" content="2020-08-07T14:29:45.000Z">
-<meta property="article:modified_time" content="2020-08-07T14:56:57.327Z">
+<meta property="article:modified_time" content="2020-08-08T09:06:07.570Z">
 <meta property="article:author" content="chaserlast">
 <meta property="article:tag" content="python">
 <meta property="article:tag" content="爬虫">
@@ -183,32 +184,25 @@
 <a id="more"></a>
 <h2 id="二-XPath常用规则"><a href="#二-XPath常用规则" class="headerlink" title="二 XPath常用规则"></a>二 XPath常用规则</h2><img src="/2020/08/07/XPath%E5%88%9D%E6%AD%A5%E5%AD%A6%E4%B9%A0/XPath%E5%B8%B8%E7%94%A8%E8%A7%84%E5%88%99.JPG" class="" title="XPath常用规则">
 
+<h2 id="三-实例"><a href="#三-实例" class="headerlink" title="三 实例"></a>三 实例</h2><p>对字符串进行解析：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">from lxml import etree</span><br><span class="line"></span><br><span class="line">text &#x3D; &#39;&#39;&#39;</span><br><span class="line">&lt;div&gt;</span><br><span class="line">    &lt;ul&gt;</span><br><span class="line">        &lt;li class&#x3D;&quot;item-0&quot;&gt;&lt;a href&#x3D;&quot;0.html&quot;&gt;item 0 &lt;&#x2F;a&gt;&lt;&#x2F;li&gt;</span><br><span class="line">        &lt;li class&#x3D;&quot;item-1&quot;&gt;&lt;a href&#x3D;&quot;1.html&quot;&gt;item 1 &lt;&#x2F;a&gt;&lt;&#x2F;li&gt;</span><br><span class="line">        &lt;li class&#x3D;&quot;item-2&quot;&gt;&lt;a href&#x3D;&quot;2.html&quot;&gt;item 2 &lt;&#x2F;a&gt;&lt;&#x2F;li&gt;</span><br><span class="line">        &lt;li class&#x3D;&quot;item-3&quot;&gt;&lt;a href&#x3D;&quot;3.html&quot;&gt;item 3 &lt;&#x2F;a&gt;&lt;&#x2F;li&gt;</span><br><span class="line">        &lt;li class&#x3D;&quot;item-4&quot;&gt;&lt;a href&#x3D;&quot;4.html&quot;&gt;item 4 &lt;&#x2F;a&gt;&lt;&#x2F;li&gt;</span><br><span class="line">        &lt;li class&#x3D;&quot;item-5&quot;&gt;&lt;a href&#x3D;&quot;5.html&quot;&gt;item 5 &lt;&#x2F;a&gt;&lt;&#x2F;li&gt;</span><br><span class="line">    &lt;&#x2F;ul&gt;     </span><br><span class="line">&lt;&#x2F;div&gt;</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line"></span><br><span class="line">html &#x3D; etree.HTML(text)                # etree模块解析字符串，转换为HTML文档，构造一个XPath解析对象，自动修正HTML文本，缺失的节点补全   </span><br><span class="line">result &#x3D; etree.tostring(html)         # 将修正后的HTML代码输出，结果是bytes类型的，所以要用decode方法变为str类型</span><br><span class="line">print(result.decode(&#39;utf-8&#39;))</span><br></pre></td></tr></table></figure>
 
+<p>对文本文件进行解析：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from lxml import etree</span><br><span class="line"></span><br><span class="line">html &#x3D; etree.parse(&#39;.&#x2F;test.html&#39;,etree.HTMLParser())   # 对文本文件进行解析</span><br><span class="line">result &#x3D; etree.tostring(html)</span><br><span class="line">print(result.decode(&#39;utf-8&#39;)</span><br></pre></td></tr></table></figure>
 
+<h2 id="四-选取"><a href="#四-选取" class="headerlink" title="四 选取"></a>四 选取</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from lxml import etree</span><br><span class="line"></span><br><span class="line">html &#x3D; etree.parse(&#39;.&#x2F;test.html&#39;,etree.HTMLParser())</span><br><span class="line">result &#x3D; html.xpath(&#39;&#x2F;&#x2F;*&#39;)        # 搭配XPath使用，用XPath进行目标选取，</span><br><span class="line">print(result)</span><br></pre></td></tr></table></figure>
+<p><code>//*</code> : 选取全部节点<br><code>//li</code> : 选取全部li节点<br><code>//li/a</code> : 选取全部li节点的所有直接a子节点<br><code>//li//a</code> : 选取全部li节点的全部子孙a节点<br><code>//a[@href = &quot;link4.html&quot;]</code> : 选取全部属性href=link4.html的a节点<br><code>//a[@href = &quot;link4.html&quot;]/../@class</code> : 首先选取全部属性href=link4.html的a节点，/..代表选中父节点，然后选取父节点的class属性<br><code>//a[@href = &quot;link4.html&quot;]/parent::*/@class</code>: 与上一个一样</p>
+<h2 id="五-文本获取"><a href="#五-文本获取" class="headerlink" title="五 文本获取"></a>五 文本获取</h2><p>文本获取用XPath中的text()方法，其中包括两种选取方式。<br>1 选取包含文本的节点，然后用text()方法。<br><code>//li[@class = &quot;item-0&quot;]/a/text()</code><br>文本包含在a节点内部，所以先选中a节点，然后用text()</p>
+<p>2 可以使用’//‘方式，但是结果会有可能包含不必要的内容<br><code>//li[@class = &quot;item-0&quot;]//text()</code><br>在选中父节点li后，直接使用text()方法，结果更全面，但是结果会有可能包含不必要的内容。</p>
+<h2 id="六-属性获取"><a href="#六-属性获取" class="headerlink" title="六 属性获取"></a>六 属性获取</h2><p><code>//li/a/@href</code>: 获取a节点的href属性<br><code>//li/a[@href = &quot;link4.html&quot;]</code>: 选中属性href = “link4.html” 的节点</p>
+<h2 id="七-属性多值匹配"><a href="#七-属性多值匹配" class="headerlink" title="七 属性多值匹配"></a>七 属性多值匹配</h2><p>有的属性属性值是有多个的，这个时候我们就要用到contains()函数了。<br><code>//li[contains(@class,&quot;li&quot;)]/a/text()</code>:选取属性class的值包括li的li节点，然后选中a子节点，获取文本。</p>
+<h2 id="八-多属性匹配"><a href="#八-多属性匹配" class="headerlink" title="八 多属性匹配"></a>八 多属性匹配</h2><p>节点一般都包括多个属性，我们有时需要用多个属性来选中节点，这是我们要用到and运算符。<br><code>//li[contains(@class,&quot;li&quot;) and @name = &quot;item&quot;]/a/text()</code>:要选择的li节点，既要class属性值包括li，还要name属性等于item</p>
+<img src="/2020/08/07/XPath%E5%88%9D%E6%AD%A5%E5%AD%A6%E4%B9%A0/XPath%E5%B8%B8%E7%94%A8%E8%BF%90%E7%AE%97%E7%AC%A6.jpg" class="" title="XPath常用运算符">
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<h2 id="九-按序选择"><a href="#九-按序选择" class="headerlink" title="九 按序选择"></a>九 按序选择</h2><p>有时候我们要选择的某些节点只是一部分，但是属性匹配多个节点，这是我们可以用中括号传入索引的办法获取特定次序的节点。</p>
+<p><code>//li[1]/a/text()</code>: 选取li节点中的第一个li节点的a子节点。<br><code>//li[last()]/a/text()</code>：最后一个<br><code>//li[position()&lt;3]/a/text()</code>：位置小于3的li节点，也就是序号为1和2的节点<br><code>//li[last()-2]/a/text()</code>：倒数第三个</p>
+<h2 id="十-节点轴选择"><a href="#十-节点轴选择" class="headerlink" title="十 节点轴选择"></a>十 节点轴选择</h2><p><code>//li[1]/ancestor::*</code>: 第一个li节点的所有祖先节点<br><code>//li[1]/ancestor::div</code>:  祖先节点为div的节点<br><code>//li[1]/attribute::*</code>: li的所有属性值<br><code>//li[1]/child::a[@href = &quot;link4.html&quot;]</code>: 所有子节点中属性href = “link4.html”的a节点<br><code>//li[1]/descendant::span</code>: 所有子孙节点中的span节点<br><code>//li[1]/following::*[2]</code>: 当前节点之后的所有节点，其中的第二个后续节点<br><code>//li[1]/following-sibling::*</code>:当前节点之后的所有同级节点。</p>
+<p>！<a href="https://www.w3.org/TR/xpath／" target="_blank" rel="noopener">XPath官网</a></p>
 
       
 
@@ -449,6 +443,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
@@ -458,10 +456,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">读书笔记</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
               </li>
              
               <li class="article-tag-list-item">
