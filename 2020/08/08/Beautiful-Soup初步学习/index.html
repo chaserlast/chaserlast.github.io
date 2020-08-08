@@ -6,25 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://chaserlast.github.io">
-  <title>学习正则表达式 | Hexo</title>
+  <title>Beautiful Soup初步学习 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一 常用的匹配规则">
+  <meta name="description" content="一 Beautiful Soup介绍Beautiful Soup 提供一些简单的、 Python式的函数来处理导航、搜索、修改分析树等功能 。它是一个工具箱，通过解析文档为用户提供需要抓取的数据，因为简单，所以不需要多少代码就可以写出一个完整的应用程序。Beautiful Soup 自动将输入文档转换为 Unicode 编码，输出文档转换为 UTF-8 编码。你不需要考虑编码方式 ，除非文档没有指">
 <meta property="og:type" content="article">
-<meta property="og:title" content="学习正则表达式">
-<meta property="og:url" content="https://chaserlast.github.io/2020/07/29/%E5%AD%A6%E4%B9%A0%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/index.html">
+<meta property="og:title" content="Beautiful Soup初步学习">
+<meta property="og:url" content="https://chaserlast.github.io/2020/08/08/Beautiful-Soup%E5%88%9D%E6%AD%A5%E5%AD%A6%E4%B9%A0/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="一 常用的匹配规则">
+<meta property="og:description" content="一 Beautiful Soup介绍Beautiful Soup 提供一些简单的、 Python式的函数来处理导航、搜索、修改分析树等功能 。它是一个工具箱，通过解析文档为用户提供需要抓取的数据，因为简单，所以不需要多少代码就可以写出一个完整的应用程序。Beautiful Soup 自动将输入文档转换为 Unicode 编码，输出文档转换为 UTF-8 编码。你不需要考虑编码方式 ，除非文档没有指">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://chaserlast.github.io/2020/07/29/%E5%AD%A6%E4%B9%A0%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/1.JPG">
-<meta property="og:image" content="https://chaserlast.github.io/2020/07/29/%E5%AD%A6%E4%B9%A0%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/2.JPG">
-<meta property="article:published_time" content="2020-07-29T13:24:14.000Z">
-<meta property="article:modified_time" content="2020-08-08T09:10:17.209Z">
+<meta property="article:published_time" content="2020-08-08T09:47:39.000Z">
+<meta property="article:modified_time" content="2020-08-08T15:11:15.408Z">
 <meta property="article:author" content="chaserlast">
 <meta property="article:tag" content="python">
 <meta property="article:tag" content="爬虫">
 <meta property="article:tag" content="读书笔记">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://chaserlast.github.io/2020/07/29/%E5%AD%A6%E4%B9%A0%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/1.JPG">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -160,52 +157,52 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-学习正则表达式" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Beautiful-Soup初步学习" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      学习正则表达式
+      Beautiful Soup初步学习
     </h1>
   
 
         
-        <a href="/2020/07/29/%E5%AD%A6%E4%B9%A0%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="archive-article-date">
-  	<time datetime="2020-07-29T13:24:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-29</time>
+        <a href="/2020/08/08/Beautiful-Soup%E5%88%9D%E6%AD%A5%E5%AD%A6%E4%B9%A0/" class="archive-article-date">
+  	<time datetime="2020-08-08T09:47:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-08</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="一-常用的匹配规则"><a href="#一-常用的匹配规则" class="headerlink" title="一 常用的匹配规则"></a>一 常用的匹配规则</h2><a id="more"></a>  
-<img src="/2020/07/29/%E5%AD%A6%E4%B9%A0%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/1.JPG" class="" title="常用的匹配规则">
+        <h2 id="一-Beautiful-Soup介绍"><a href="#一-Beautiful-Soup介绍" class="headerlink" title="一 Beautiful Soup介绍"></a>一 Beautiful Soup介绍</h2><p>Beautiful Soup 提供一些简单的、 Python式的函数来处理导航、搜索、修改分析树等功能 。<br>它是一个工具箱，通过解析文档为用户提供需要抓取的数据，因为简单，所以不需要多少代<br>码就可以写出一个完整的应用程序。<br>Beautiful Soup 自动将输入文档转换为 Unicode 编码，输出文档转换为 UTF-8 编码。你不<br>需要考虑编码方式 ，除非文档没有指定一个编码方式，这时你仅仅需妥说明一下原始编码方<br>式就可以了 。<br>Beautiful Soup 已成为和lxml 、 html6lib 一样出色的 Python 解释器，为用户灵活地提供不<br>同的解析策略或强劲的速度。</p>
+<a id="more"></a>
 
-<h2 id="二-常用的匹配方法"><a href="#二-常用的匹配方法" class="headerlink" title="二 常用的匹配方法"></a>二 常用的匹配方法</h2><p>1 match()<br>从字符串的开头开始匹配的，一旦开头不匹配，那么整个匹配就失败了。<br>常用方法：match(‘正则表达式’,字符串)<br>match()有两个方法，group()和span()<br>group()方法输出匹配的内容<br>span()方法输出匹配的范围<br>如果我们想要提取一部分字符串内容，就可以把正则表达式里要提取的一部分用()括起来。</p>
-<p><strong>贪婪与非贪婪</strong>   </p>
-<p><code>.*</code>代表通用匹配，但是属于匹配尽可能多的内容，贪婪匹配</p>
-<p><code>.*?</code>代表通用匹配，但是属于匹配尽可能少的内容，属于非贪婪匹配。</p>
-<p>通常情况下我们要使用费贪婪匹配，但是匹配字符串结尾时，<code>.*?</code>可能会匹配不到内容，因为是匹配尽可能少的内容。</p>
-<p><strong>修饰符</strong>  </p>
-<p>使用修饰符来控制匹配模式</p>
-<img src="/2020/07/29/%E5%AD%A6%E4%B9%A0%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/2.JPG" class="" title="常用的修饰符规则">
-
-<p>转义匹配</p>
-<p>有的时候要匹配的字符串中带有特殊字符时，应该使用转义字符</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">result &#x3D; re.match(&#39;\(百度\)www\.baidu\.com&#39;,content)</span><br></pre></td></tr></table></figure>
-<p>如上例的\和.这样正则表达式本身就具有的符号，就要转义。</p>
-<p>2 search()<br>扫描整个字符串，然后返回第一个成功匹配的结果。<br><code>result = re.search(&#39;正则表达式&#39;,字符串,修饰符)</code></p>
-<p>3 findall()<br>搜索整个字符串，返回匹配正则表达式的所有内容。</p>
-<p>4 sub()<br>可以用于修改文本。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">content &#x3D; &#39;f4434ei42grht424bjt&#39;</span><br><span class="line">content &#x3D; re.sub(&#39;\d+&#39;,&#39;&#39;,content)    所有数字赋值为空</span><br><span class="line">print(content)</span><br></pre></td></tr></table></figure>
-
-<p>5 compile()<br>将正则表达式编译成正则表达式对象，以便在后面的匹配中复用。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">content1 &#x3D; &#39;2016-12-15 12:00&#39;</span><br><span class="line">content2 &#x3D; &#39;2016-12-17 12:55&#39;</span><br><span class="line">content3 &#x3D; &#39;2016-12-22 13:00&#39;</span><br><span class="line"></span><br><span class="line">pattern &#x3D; re.compile(&#39;\d&#123;2&#125;:\d&#123;2&#125;&#39;)</span><br><span class="line">result1 &#x3D; re.sub(pattern,&#39;&#39;,content1)</span><br><span class="line">result2 &#x3D; re.sub(pattern,&#39;&#39;,content2)</span><br><span class="line">result3 &#x3D; re.sub(pattern,&#39;&#39;,content3)</span><br><span class="line">print(result1,result2,result3)</span><br></pre></td></tr></table></figure>
+<p><strong>解析器</strong></p>
+<p>Beautiful Soup在解析时实际上依赖解析器，它除了支持Python标准库中的HTML解析器外，还支持一些第三方解析器(比如lxml )。</p>
 
 
-<p><a href="https://tool.oschina.net/regex" target="_blank" rel="noopener">开源中国的正则表达式测试工具</a></p>
+<h2 id="二-基本用法"><a href="#二-基本用法" class="headerlink" title="二 基本用法"></a>二 基本用法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">from bs4 import BeautifulSoup </span><br><span class="line"></span><br><span class="line">html &#x3D; &quot;&quot;&quot;</span><br><span class="line">&lt;html&gt;&lt;head&gt;&lt;title&gt;haha,The Dormouse&#39;s story&lt;&#x2F;title&gt;&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;p class&#x3D;&quot;title&quot; name&#x3D;&quot;dromouse&quot;&gt;&lt;b&gt;The Dormouse&#39;s story&lt;&#x2F;b&gt;&lt;&#x2F;p&gt;</span><br><span class="line">&lt;p class&#x3D;&quot;story&quot;&gt;Once upon a time there were three little sisters; and their names were</span><br><span class="line">&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;example.com&#x2F;elsie&quot; class&#x3D;&quot;sister&quot; id&#x3D;&quot;link1&quot;&gt;&lt;!-- Elsie --&gt;&lt;&#x2F;a&gt;,</span><br><span class="line">&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;example.com&#x2F;lacie&quot; class&#x3D;&quot;sister&quot; id&#x3D;&quot;link2&quot;&gt;Lacie&lt;&#x2F;a&gt; and</span><br><span class="line">&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;example.com&#x2F;tillie&quot; class&#x3D;&quot;sister&quot; id&#x3D;&quot;link3&quot;&gt;Tillie&lt;&#x2F;a&gt;;</span><br><span class="line">and they lived at the bottom of a well.&lt;&#x2F;p&gt;</span><br><span class="line">&lt;p class&#x3D;&quot;story&quot;&gt;...&lt;&#x2F;p&gt;                               # HTML格式的字符串</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">soup &#x3D; BeautifulSoup(html,&#39;lxml&#39;)   # 初始化一个BeautifulSoup对象，指定解析器为lxml，同时自动更正HTML的格式</span><br><span class="line">print(soup.prettify())              # 将要解析的字符串以标准的缩进格式输出</span><br><span class="line">print(soup.title.string)             # 输出HTML中title节点的文本内容，soup.title选中节点，string得到里面的文本，get_text()方法也可以</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="三-节点选择器"><a href="#三-节点选择器" class="headerlink" title="三 节点选择器"></a>三 节点选择器</h2><p><strong>选择元素</strong><br><code>soup.title</code>: 选中title节点<br><code>soup.title.string</code>: 获取title节点的文本内容<br><code>soup.title.name</code>: 获取title节点的名称<br><code>soup.p.attrs</code>: 获取p节点的所有属性，返回结果是字典形式。<br><code>soup.p.attrs[&#39;name&#39;]</code>: 获取p节点的name属性的值<br><code>soup.p[&#39;name&#39;]</code>: 同上，比写attrs简洁，</p>
+<p><strong>嵌套选择</strong></p>
+<p><code>soup.head.title.string</code>: 先选取head，在选取其中的title节点，最后输出title节点的文本内容</p>
+<p><strong>关联选择</strong></p>
+<p><code>soup.p.contents</code>: 获取直接子节点，孙子节点不会单独列出，返回结果是列表类型<br><code>soup.p.children</code>: 同上，但是返回类型是生成器类型，输出需要用for循环<br><code>soup.p.descendants</code>: 获取所有子孙节点，返回类型是生成器类型<br><code>soup.p.parent</code>: 获取直接父节点，不会向外寻找父节点的祖先节点,返回类型是生成器类型<br><code>soup.p.parents</code>: 获取所有祖先节点，返回类型是生成器类型<br><code>soup.p.next_sibling</code>: 获取节点的下一个兄弟节点<br><code>soup.p.previous_sibling</code>: 获取节点的上一个兄弟节点<br><code>soup.p.next_siblings</code>: 获取所有后面的兄弟节点<br><code>soup.p.previous_sibling</code>: 获取所有前面的兄弟节点</p>
+<h2 id="四-方法选择器"><a href="#四-方法选择器" class="headerlink" title="四 方法选择器"></a>四 方法选择器</h2><p>1 find_all()<br>返回所有匹配的元素<br>API:<code>find_all(name,attrs,recursive,text,**kwargs)</code><br>结果是列表类型<br>(1)name : 节点名<br><code>print(soup.find_all(name = &#39;ul&#39;)</code><br>返回结果是列表类型，每个元素依然是bs4.element.Tag类型，可以进行嵌套查询。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for ul in soup.find_all(name &#x3D; &#39;ul&#39;):</span><br><span class="line">    print(ul.find_all(name &#x3D; &#39;li&#39;))         # 输出ul节点内的li节点</span><br><span class="line">    for li in ul.find_all(name &#x3D; &#39;li&#39;):</span><br><span class="line">        print(li.string)                    # 输出ul节点内的li节点的文本内容</span><br></pre></td></tr></table></figure>
+
+<p>(2)attrs: 属性值  参数类型是字典类型<br><code>print(soup.find_all(attrs = {&#39;id&#39;:&#39;list-1&#39;}))</code></p>
+<p>(3)text：匹配节点的文本，传入的形式可以使字符串，可以是正则表达式对象<br><code>print(soup.find_all(text = re.compile(&#39;link&#39;)))</code></p>
+<p>2 find()<br>返回第一个匹配的元素<br><code>print(soup.find(name = &#39;ul&#39;))</code></p>
+<p>3 其他方法<br>find_parents()和find_parent(): 前者返回所有祖先节点，后者返回直接父节点。<br>find_next_siblings()和find_next_sibling(): 前者返回后面所有兄弟节点，后者返回后面的第一个兄弟节点<br>find_previous_siblings()和find_previous_sibling():前者返回前面所有兄弟节点，后者返回前面的第一个兄弟节点<br>find_all_next()和find_next(): 前者返回节点后所有符合条件的节点，后者返回第一个符合条件的节点<br>find_all_previous()和find_previous():前者返回节点前所有符合条件的节点，后者返回第一个符合条件的节点</p>
+<h2 id="五-CSS选择器"><a href="#五-CSS选择器" class="headerlink" title="五 CSS选择器"></a>五 CSS选择器</h2><p>使用CSS选择器时，只需要调用select()方法，传入相应的CSS选择器即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">print(soup.select(&#39;.panel .panel-heading&#39;))</span><br><span class="line">print(soup.select(&#39;ul li&#39;))</span><br><span class="line">print(soup.select(&#39;#list-2 .element&#39;))</span><br></pre></td></tr></table></figure>
+
+<p>select()方法同样支持嵌套选择</p>
 
       
 
@@ -304,7 +301,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://chaserlast.github.io/2020/07/29/%E5%AD%A6%E4%B9%A0%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://chaserlast.github.io/2020/08/08/Beautiful-Soup%E5%88%9D%E6%AD%A5%E5%AD%A6%E4%B9%A0/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -318,18 +315,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/08/05/requests-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F-%E7%88%AC%E5%8F%96%E7%8C%AB%E7%9C%BC%E7%94%B5%E5%BD%B1%E6%8E%92%E8%A1%8C/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          requests--正则表达式  爬取猫眼电影排行
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/07/26/requests%E5%BA%93%E7%9A%84%E7%AE%80%E5%8D%95%E5%AD%A6%E4%B9%A0/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">requests库的简单学习</div>
+    <a href="/2020/08/07/XPath%E5%88%9D%E6%AD%A5%E5%AD%A6%E4%B9%A0/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">XPath初步学习</div>
       <i class="icon-circle-right"></i>
     </a>
   

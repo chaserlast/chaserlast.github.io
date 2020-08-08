@@ -6,25 +6,15 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://chaserlast.github.io">
-  <title>学习正则表达式 | Hexo</title>
+  <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一 常用的匹配规则">
-<meta property="og:type" content="article">
-<meta property="og:title" content="学习正则表达式">
-<meta property="og:url" content="https://chaserlast.github.io/2020/07/29/%E5%AD%A6%E4%B9%A0%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="https://chaserlast.github.io/page/2/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="一 常用的匹配规则">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://chaserlast.github.io/2020/07/29/%E5%AD%A6%E4%B9%A0%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/1.JPG">
-<meta property="og:image" content="https://chaserlast.github.io/2020/07/29/%E5%AD%A6%E4%B9%A0%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/2.JPG">
-<meta property="article:published_time" content="2020-07-29T13:24:14.000Z">
-<meta property="article:modified_time" content="2020-08-08T09:10:17.209Z">
 <meta property="article:author" content="chaserlast">
-<meta property="article:tag" content="python">
-<meta property="article:tag" content="爬虫">
-<meta property="article:tag" content="读书笔记">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://chaserlast.github.io/2020/07/29/%E5%AD%A6%E4%B9%A0%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/1.JPG">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -160,181 +150,62 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-学习正则表达式" class="article article-type-post " itemscope itemprop="blogPost">
+            
+  
+    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 class="article-title" itemprop="name">
-      学习正则表达式
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/22/hello-world/">Hello World</a>
     </h1>
   
 
         
-        <a href="/2020/07/29/%E5%AD%A6%E4%B9%A0%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="archive-article-date">
-  	<time datetime="2020-07-29T13:24:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-29</time>
+        <a href="/2020/07/22/hello-world/" class="archive-article-date">
+  	<time datetime="2020-07-21T17:03:25.025Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-22</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="一-常用的匹配规则"><a href="#一-常用的匹配规则" class="headerlink" title="一 常用的匹配规则"></a>一 常用的匹配规则</h2><a id="more"></a>  
-<img src="/2020/07/29/%E5%AD%A6%E4%B9%A0%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/1.JPG" class="" title="常用的匹配规则">
+        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="二-常用的匹配方法"><a href="#二-常用的匹配方法" class="headerlink" title="二 常用的匹配方法"></a>二 常用的匹配方法</h2><p>1 match()<br>从字符串的开头开始匹配的，一旦开头不匹配，那么整个匹配就失败了。<br>常用方法：match(‘正则表达式’,字符串)<br>match()有两个方法，group()和span()<br>group()方法输出匹配的内容<br>span()方法输出匹配的范围<br>如果我们想要提取一部分字符串内容，就可以把正则表达式里要提取的一部分用()括起来。</p>
-<p><strong>贪婪与非贪婪</strong>   </p>
-<p><code>.*</code>代表通用匹配，但是属于匹配尽可能多的内容，贪婪匹配</p>
-<p><code>.*?</code>代表通用匹配，但是属于匹配尽可能少的内容，属于非贪婪匹配。</p>
-<p>通常情况下我们要使用费贪婪匹配，但是匹配字符串结尾时，<code>.*?</code>可能会匹配不到内容，因为是匹配尽可能少的内容。</p>
-<p><strong>修饰符</strong>  </p>
-<p>使用修饰符来控制匹配模式</p>
-<img src="/2020/07/29/%E5%AD%A6%E4%B9%A0%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/2.JPG" class="" title="常用的修饰符规则">
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
 
-<p>转义匹配</p>
-<p>有的时候要匹配的字符串中带有特殊字符时，应该使用转义字符</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">result &#x3D; re.match(&#39;\(百度\)www\.baidu\.com&#39;,content)</span><br></pre></td></tr></table></figure>
-<p>如上例的\和.这样正则表达式本身就具有的符号，就要转义。</p>
-<p>2 search()<br>扫描整个字符串，然后返回第一个成功匹配的结果。<br><code>result = re.search(&#39;正则表达式&#39;,字符串,修饰符)</code></p>
-<p>3 findall()<br>搜索整个字符串，返回匹配正则表达式的所有内容。</p>
-<p>4 sub()<br>可以用于修改文本。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">content &#x3D; &#39;f4434ei42grht424bjt&#39;</span><br><span class="line">content &#x3D; re.sub(&#39;\d+&#39;,&#39;&#39;,content)    所有数字赋值为空</span><br><span class="line">print(content)</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
 
-<p>5 compile()<br>将正则表达式编译成正则表达式对象，以便在后面的匹配中复用。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">content1 &#x3D; &#39;2016-12-15 12:00&#39;</span><br><span class="line">content2 &#x3D; &#39;2016-12-17 12:55&#39;</span><br><span class="line">content3 &#x3D; &#39;2016-12-22 13:00&#39;</span><br><span class="line"></span><br><span class="line">pattern &#x3D; re.compile(&#39;\d&#123;2&#125;:\d&#123;2&#125;&#39;)</span><br><span class="line">result1 &#x3D; re.sub(pattern,&#39;&#39;,content1)</span><br><span class="line">result2 &#x3D; re.sub(pattern,&#39;&#39;,content2)</span><br><span class="line">result3 &#x3D; re.sub(pattern,&#39;&#39;,content3)</span><br><span class="line">print(result1,result2,result3)</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 
-
-<p><a href="https://tool.oschina.net/regex" target="_blank" rel="noopener">开源中国的正则表达式测试工具</a></p>
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
 
       
 
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
       
     </div>
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">爬虫</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">读书笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
 
       
-
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/22/hello-world/">展开全文 >></a>
+        </p>
       
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
-        </div>
-      </div>
-    </span>
-  </div>
-</div>
 
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://chaserlast.github.io/2020/07/29/%E5%AD%A6%E4%B9%A0%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2020/08/05/requests-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F-%E7%88%AC%E5%8F%96%E7%8C%AB%E7%9C%BC%E7%94%B5%E5%BD%B1%E6%8E%92%E8%A1%8C/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          requests--正则表达式  爬取猫眼电影排行
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2020/07/26/requests%E5%BA%93%E7%9A%84%E7%AE%80%E5%8D%95%E5%AD%A6%E4%B9%A0/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">requests库的简单学习</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -354,14 +225,12 @@
 
 
 
-  
-  
-  
 
   
-
   
-
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    </nav>
   
 
 
@@ -384,8 +253,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: false,
-		isPost: true,
+		isHome: true,
+		isPost: false,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
