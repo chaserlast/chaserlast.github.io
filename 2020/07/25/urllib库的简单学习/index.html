@@ -16,7 +16,7 @@
 <meta property="og:description" content="一 urllib库介绍urllib库时python内置的HTTP请求库。包括四个模块：1 request模块：是最基本的HTTP请求模块，可以用来模拟发送请求。2 error模块：异常处理模块。3 parse模块：一个工具模块，提供了很多URL处理方法，比如拆分，解析，合并等。4 robotparser模块：主要用来识别网站的robots.txt文件，判断哪些网站可以爬。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-07-25T11:37:28.000Z">
-<meta property="article:modified_time" content="2020-08-08T09:13:21.540Z">
+<meta property="article:modified_time" content="2020-08-12T14:41:20.012Z">
 <meta property="article:author" content="chaserlast">
 <meta property="article:tag" content="python">
 <meta property="article:tag" content="爬虫">
@@ -190,7 +190,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">from urllib.request import HTTPPasswordMgrWithDefaultRealm,HTTPBasicAuthHandler,build_opener</span><br><span class="line">from urllib.error import URLError</span><br><span class="line"></span><br><span class="line">username &#x3D; &#39;username&#39;                                     #需要认证的用户名</span><br><span class="line">password &#x3D; &#39;password&#39;                                     #需要认证的密码</span><br><span class="line">url &#x3D; &#39;http:&#x2F;&#x2F;localhost:5000&#39;                              #需要认证的url</span><br><span class="line"></span><br><span class="line">p &#x3D; HTTPPasswordMgrWithDefaultRealm()</span><br><span class="line">P.add_password(None,url,username,password)                 #添加用户名和密码</span><br><span class="line">auth_handler &#x3D; HTTPBasicAuthHandler(p)                    #实例化一个HTTPBasicAuthHandler对象</span><br><span class="line">opener &#x3D; build_opener(auth_handler)                          #构建一个opener</span><br><span class="line"></span><br><span class="line">try:</span><br><span class="line">    result &#x3D; opener.open(url)</span><br><span class="line">    html &#x3D; result.read().decode(&#39;utf-8&#39;)</span><br><span class="line">    print(html)</span><br><span class="line">except URLError as e:</span><br><span class="line">    print(e.reason)</span><br></pre></td></tr></table></figure>
 
 <p>（2）代理</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">from urllib.error import URLError</span><br><span class="line">from url.request import ProxyHandler,build_opener</span><br><span class="line"></span><br><span class="line">proxy_handler &#x3D; ProxyHandler(&#123;</span><br><span class="line">    &#39;http&#39;: &#39;http:&#x2F;&#x2F;127.0.0.1:9473&#39;,                    #http代理，这是本地端口，实际上应该用代理服务器</span><br><span class="line">    &#39;https&#39;: &#39;https:&#x2F;&#x2F;127.0.0.1:9473&#39;                   #https代理</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">opener &#x3D; build_opener(proxy_handler)                     #构建一个代理的opener</span><br><span class="line">try:</span><br><span class="line">    response &#x3D; opener.open(&#39;https:&#x2F;&#x2F;www.baidu.com&#39;)</span><br><span class="line">    print(response.read().decode(&#39;utf-8&#39;))</span><br><span class="line">except URLError as e:</span><br><span class="line">    print(e.reason)     &#96;&#96;&#96;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">from urllib.error import URLError</span><br><span class="line">from url.request import ProxyHandler,build_opener</span><br><span class="line"></span><br><span class="line">proxy_handler &#x3D; ProxyHandler(&#123;</span><br><span class="line">    &#39;http&#39;: &#39;http:&#x2F;&#x2F;127.0.0.1:9473&#39;,                    #http代理，这是本地端口，实际上应该用代理服务器</span><br><span class="line">    &#39;https&#39;: &#39;https:&#x2F;&#x2F;127.0.0.1:9473&#39;                   #https代理</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">opener &#x3D; build_opener(proxy_handler)                     #构建一个代理的opener</span><br><span class="line">try:</span><br><span class="line">    response &#x3D; opener.open(&#39;https:&#x2F;&#x2F;www.baidu.com&#39;)</span><br><span class="line">    print(response.read().decode(&#39;utf-8&#39;))</span><br><span class="line">except URLError as e:</span><br><span class="line">    print(e.reason)</span><br></pre></td></tr></table></figure>
 
 <p>（3）Cookies</p>
 <p>获取cookies：</p>
@@ -210,14 +210,14 @@
 <h2 id="四-parse模块"><a href="#四-parse模块" class="headerlink" title="四 parse模块"></a>四 parse模块</h2><p>它定义了处理URL的标准接口<br>1 urlparse():实现URL的识别和分段</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">from urllib.parse import urlparse</span><br><span class="line">result &#x3D; urlparse(&#39;http:&#x2F;&#x2F;www.baidu.com&#x2F;index.html;user?id&#x3D;5#comment&#39;)</span><br><span class="line">print(type(result),result)</span><br></pre></td></tr></table></figure>
 
-<p>返回URL的6部分：<br>`scheme=’http’ netloc=’<a href="http://www.baidu.com&#39;，path=&#39;index.html" target="_blank" rel="noopener">www.baidu.com&#39;，path=&#39;index.html</a> params= user query=’id=5’,fragment=’comment’)<br>分别是协议，域名，访问路径，参数，查询条件，锚点</p>
+<p>返回URL的6部分：<br>scheme=’http’ netloc=’<a href="http://www.baidu.com&#39;，path=&#39;index.html" target="_blank" rel="noopener">www.baidu.com&#39;，path=&#39;index.html</a> params= user query=’id=5’,fragment=’comment’)<br>分别是协议，域名，访问路径，参数，查询条件，锚点</p>
 <p>API:<br><code>urllib.parse.urlparse(urlstring,scheme=&#39;&#39;,allow fragments = True)</code><br>urlstring:待解析的URL<br>scheme:默认的协议<br>allow fragments：是否忽略fragment</p>
 <p>2 urlunparse()<br>与urlparse()对立，接受的参数是一个可迭代对象。</p>
 <p>3 urlsplit()<br>与urlparse()相似，只不过不在单独解析params,只返回5个结果。</p>
 <p>4 urlunsplit()</p>
-<p>5 urljoin()<br>可以将残缺的url拼接起来，以第二个参数为准。</p>
+<p>5 urljoin()<br>可以将残缺的url拼接起来，以第二个参数为准。<br>我们可以提供一个base_url(基础链接)作为第一个参数，将新的链接作为第二个参数，该方法会分析base_url的scheme,netloc,和path这3个内容并对新链接缺失的内容进行补充。<br>可以发现，base_url 提供了三项内容 scheme,netloc和path。如果这3项在新的链接里不存在，就予以补充；如果新的链接存在，就使用新的链接的部分。 而 base_url 中的 params 、 query 和 fragment<br>是不起作用的。</p>
 <p>6 urlencode()</p>
-<p><code>url = base_url + urlencode(params)</code>       #params是一个字典，然后将params加进原有URL</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">from urllib.parse import urlencode</span><br><span class="line"></span><br><span class="line">params &#x3D; &#123;</span><br><span class="line">    &#39;name&#39;:&#39;germey&#39;,</span><br><span class="line">    &#39;age&#39;:22</span><br><span class="line">&#125;</span><br><span class="line">base_url &#x3D; &#39;http:&#x2F;&#x2F;www,baidu.com?&#39;</span><br><span class="line">url &#x3D; base_url + urlencode(params)     #params是一个字典，urlencode()方法将其序列化为GET请求参数。</span><br><span class="line">print(url)</span><br></pre></td></tr></table></figure>
 <p>7 parse_qs()<br>与urlencode()相反，返回一个字典</p>
 <p>8 parse_qsl()<br>和parse_qs()相似，只是返回的是一个元组。</p>
 <p>9 quote()<br>将内容转化为URL编码的格式</p>
@@ -497,11 +497,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -510,10 +510,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">github</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">爬虫常用的数据存储方法</a>
               </li>
              
               <li class="article-tag-list-item">
